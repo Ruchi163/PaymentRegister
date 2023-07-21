@@ -1,0 +1,39 @@
+<form class=" border border-black p-5 m-5 " novalidate #form="ngForm" (submit)="onSubmit(form)">
+
+    
+    <input type="hidden" name="paymentDetailId" value="service.formData.paymentDetailId" />
+
+    <div class="flex flex-col">
+        <label class=" font-semibold text-[18px] ">Card Owner name</label>
+        <input placeholder="Fullname" name="cardOwnerName" #cardOwnerName="ngModel"
+            class="my-2 p-1 border  border-black" required
+            [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched"
+            [(ngModel)]="service.formData.cardOwnerName" />
+    </div>
+    <div class="flex flex-col">
+        <label class=" font-semibold text-[18px] ">Card Number</label>
+        <input placeholder="16 Digit CardNumber" name="cardNumber" #cardNumber="ngModel"
+            class="my-2 p-1 border border-black" required maxlength="16" minlength="16"
+            [class.invalid]="cardNumber.invalid && cardNumber.touched" [(ngModel)]="service.formData.cardNumber" />
+    </div>
+    <div class="flex flex-row">
+        <div class="flex flex-col col-span-6">
+            <label class=" font-semibold text-[18px] ">Valid Through</label>
+            <input placeholder="MM/YY" name="expirationDate" #expirationDate="ngModel"
+                class="my-2 p-1 border border-black" required maxlength="5" minlength="5"
+                [class.invalid]="expirationDate.invalid && expirationDate.touched"
+                [(ngModel)]="service.formData.expirationDate" />
+        </div>
+        <div class="flex flex-col ml-1 col-span-6">
+            <label class=" font-semibold text-[18px] ">Security Code</label>
+            <input type="password" placeholder="***" name="securityCode" #securityCode="ngModel"
+                class="my-2 p-1 border border-black" required maxlength="3" minlength="3"
+                [class.invalid]="securityCode.invalid && securityCode.touched"
+                [(ngModel)]="service.formData.securityCode" />
+        </div>
+    </div>
+    <button class="bg-green-200 font-extralight p-2 my-2 rounded-md" [disabled]="form.invalid"
+        type="submit">Submit</button>
+
+</form>
+<script src="https://kit.fontawesome.com/698c1a76d1.js" crossorigin="anonymous"></script>

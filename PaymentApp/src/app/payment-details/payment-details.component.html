@@ -1,0 +1,36 @@
+<div >
+    <div class="bg-green-200 font-light p-5 text-center text-[24px] rounded-md"><p>Payment Details Register</p></div>
+    
+    <div class="flex flex-row">
+        <div class="">
+            <app-payment-details-form></app-payment-details-form>
+        </div>
+        <div class=" w-[150vh]  ">
+
+            <table class="m-4">
+                <thead>
+                    <tr>
+                        <th class="px-5">Card Owner Name</th>
+                        <th class="px-5">Card Number</th>
+                        <th class="px-5">Valid Date</th>
+                        <th class="px-5">Security Code</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let pd of service.list">
+                        <td (click)="populateForm(pd)" class="px-5">{{pd.cardOwnerName}}</td>
+                        <td (click)="populateForm(pd)" class="px-5">{{pd.cardNumber}}</td>
+                        <td (click)="populateForm(pd)" class="px-5">{{pd.expirationDate}}</td>
+                        <td class="px-5" (click)="deleteForm(pd.paymentDetailId)"><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+
+        </div>
+    </div>
+
+
+</div>
